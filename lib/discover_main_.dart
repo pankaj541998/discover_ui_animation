@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:animate_do/animate_do.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:photo_view/photo_view.dart';
+import 'dart:math' as math;
 
 class Discovers extends StatefulWidget {
   const Discovers({super.key});
@@ -204,9 +206,31 @@ class _DiscoversState extends State<Discovers> {
       backgroundColor: const Color(0xff1C1C1C),
       builder: (context) => SizedBox(
         height: MediaQuery.of(context).size.height,
-        child: PhotoView(
+        child: 
+        
+        // PhotoView(
+        //   imageProvider: NetworkImage(imageData),
+        //   minScale: PhotoViewComputedScale.contained * 0.9,
+        // ),
+    //     InteractiveViewer(
+    //   panEnabled: false, // Set it to false
+    //   boundaryMargin: EdgeInsets.all(100),
+    //   minScale: 0.5,
+    //   maxScale: 2,
+    //   child: Image.network(
+    //     imageData,
+    //     // width: 200,
+    //     // height: 200,
+    //     fit: BoxFit.cover,
+    //   ),
+    // ),
+
+        PhotoView(
           imageProvider: NetworkImage(imageData),
           minScale: PhotoViewComputedScale.contained * 0.9,
+          maxScale: PhotoViewComputedScale.covered * 2,
+          initialScale: PhotoViewComputedScale.contained * 0.9,
+          heroAttributes: PhotoViewHeroAttributes(tag: imageData),
         ),
       ),
       shape: RoundedRectangleBorder(
